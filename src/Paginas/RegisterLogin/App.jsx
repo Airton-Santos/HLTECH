@@ -6,27 +6,36 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom'; // Importa o hook
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [modoCadastro, setModoCadastro] = useState(false);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [animando, setAnimando] = useState(false);
 
-  const navigate = useNavigate(); // Hook para navegar
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
       if (modoCadastro) {
+        if (!nome || !cpf || !telefone) {
+          alert('Preencha todos os campos.');
+          return;
+        }
+
         await createUserWithEmailAndPassword(auth, email, senha);
+
+        // Aqui futuramente podemos salvar nome, CPF e telefone no Firestore
         alert('Cadastro realizado com sucesso!');
       } else {
         await signInWithEmailAndPassword(auth, email, senha);
         alert('Login realizado com sucesso!');
       }
 
-      // Redireciona para a tela Home após sucesso
       navigate('/home');
 
     } catch (error) {
@@ -41,6 +50,9 @@ function App() {
       setModoCadastro(!modoCadastro);
       setEmail('');
       setSenha('');
+      setNome('');
+      setCpf('');
+      setTelefone('');
       setAnimando(false);
     }, 300);
   };
@@ -50,6 +62,40 @@ function App() {
       <img src={logo} alt="Logo" className="logo" />
       <div className={`login-box ${animando ? 'fade' : ''}`}>
         <h1>{modoCadastro ? 'Cadastro' : 'Login'}</h1>
+
+        {modoCadastro && (
+          <>
+            <label>
+              Nome:
+              <input
+                type="text"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                placeholder="Digite seu nome completo"
+              />
+            </label>
+
+            <label>
+              CPF:
+              <input
+                type="text"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                placeholder="Digite seu CPF"
+              />
+            </label>
+
+            <label>
+              Telefone:
+              <input
+                type="tel"
+                value={telefone}
+                onChange={(e) => setTelefone(e.target.value)}
+                placeholder="Digite seu telefone"
+              />
+            </label>
+          </>
+        )}
 
         <label>
           Email:

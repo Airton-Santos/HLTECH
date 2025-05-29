@@ -1,16 +1,19 @@
+// StockList.jsx
 import React from 'react';
+import './Dashboard.css';
 
 function StockList({ items }) {
-  if (items.length === 0) return <p>Nenhuma peça encontrada.</p>;
-
   return (
-    <ul>
+    <div className="stock-list">
       {items.map(item => (
-        <li key={item.id}>
-          <strong>{item.nome}</strong> — {item.preco}
-        </li>
+        <div className="stock-item" key={item.id}>
+          <img src={item.imagem} alt={item.nome} className="item-img" />
+          <h3>{item.nome}</h3>
+          <p className="item-spec">{item.especificacao}</p>
+          <p className="item-price">{item.preco}</p>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 
