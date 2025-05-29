@@ -1,0 +1,30 @@
+.user-profile-page {
+  min-height: 100vh;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.user-container {
+  max-width: 600px;
+  margin: 100px auto 40px;
+  background-color: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.user-container h2 {
+  text-align: center;
+  color: #3b82f6;
+  margin-bottom: 20px;
+}
+
+.user-info p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.user-info strong {
+  color: #facc15;
+}

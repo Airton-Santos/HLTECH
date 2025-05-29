@@ -1,0 +1,13 @@
+body {
+    background-color: #111827; /* escuro para combinar com seu tema */
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100vh;
+  color: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

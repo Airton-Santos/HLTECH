@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import './App.css';
-import logo from '../../../assets/Logo.png';
-import { auth } from '../../../../firebaseConfig';
+import logo from '../../assets/Logo.png';
+import { auth } from '../../../firebaseConfig';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom'; // Importa o hook
 
 function App() {
   const [modoCadastro, setModoCadastro] = useState(false);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [animando, setAnimando] = useState(false);
+
+  const navigate = useNavigate(); // Hook para navegar
 
   const handleSubmit = async () => {
     try {
@@ -22,6 +25,10 @@ function App() {
         await signInWithEmailAndPassword(auth, email, senha);
         alert('Login realizado com sucesso!');
       }
+
+      // Redireciona para a tela Home após sucesso
+      navigate('/home');
+
     } catch (error) {
       console.error(error);
       alert('Erro: ' + error.message);
@@ -29,13 +36,13 @@ function App() {
   };
 
   const trocarModo = () => {
-    setAnimando(true); // inicia animação
+    setAnimando(true);
     setTimeout(() => {
       setModoCadastro(!modoCadastro);
       setEmail('');
       setSenha('');
-      setAnimando(false); // finaliza animação após troca
-    }, 300); // tempo da animação em ms
+      setAnimando(false);
+    }, 300);
   };
 
   return (

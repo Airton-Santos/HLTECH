@@ -1,0 +1,35 @@
+/* Dashboard.css */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a; /* cor de fundo geral */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.home-container {
+  height: 100vh;           /* ocupa a altura total da viewport */
+  width: 100vw;            /* ocupa a largura total da viewport */
+  box-sizing: border-box;  /* inclui padding na largura/altura */
+  padding: 40px 60px;
+  background-color: #1f2937;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto; /* permite scroll vertical caso necessário */
+}
+
+.home-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #a000c0;
+  margin-bottom: 10px;
+}
+
+/* Reaproveite suas classes .search-bar e .stock-list */
+
+/* ... seu CSS para .search-bar, .stock-list, etc fica igual ... */

@@ -1,0 +1,102 @@
+.navbar {
+  width: 100vw;            /* ocupar toda largura da viewport */
+  height: 60px;            /* altura fixa */
+  background-color: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  flex-direction: row;     /* alinhamento horizontal */
+  align-items: center;     /* centraliza verticalmente */
+  justify-content: space-between; /* logo à esquerda, links à direita */
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-sizing: border-box;  /* incluir padding na largura */
+  position: relative;      /* para usar posicionamento relativo se quiser */
+  z-index: 1000;           /* para ficar sobre outros elementos */
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 150px;   /* diminui para caber na navbar */
+  height: 150px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-links li:hover {
+  color: #680051;
+}
+
+/* Base do hamburger - escondido no desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 30px;
+  height: 3px;
+  background-color: #f8fafc;
+  transition: 0.3s;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Faz navbar ser coluna para acomodar menu embaixo */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto; /* altura automática para crescer com o menu */
+    padding: 10px 20px;
+  }
+
+  /* Ajusta a parte superior (logo + hamburger) */
+  .navbar-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Menu fica abaixo naturalmente */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin-top: 10px;
+    background-color: #1e293b;
+    padding: 15px 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.ativo {
+    display: flex;
+  }
+}
